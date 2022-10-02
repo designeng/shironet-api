@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const { DB_LOGIN, DB_PASSWORD, DB_BASE_URL } = process.env;
 
-const url = `mongodb+srv://${DB_LOGIN}:${DB_PASSWORD}@${DB_BASE_URL}/?retryWrites=true&w=majority`;
+const url = `mongodb+srv://${DB_LOGIN}:${DB_PASSWORD}@${DB_BASE_URL}/HebrewSongs?retryWrites=true&w=majority`;
 
 @Module({
   imports: [
