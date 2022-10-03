@@ -15,4 +15,14 @@ export class AppController {
   async findAll(): Promise<Word[]> {
     return this.appService.findAll();
   }
+
+  @Get('/mp3/:id')
+  async getMp3ById(id: String) {
+    return this.appService.getMp3ById(id);
+  }
+
+  @Get('/upload')
+  async storeFileInDb() {
+    return this.appService.storeFileInDb();
+  }
 }
