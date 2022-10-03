@@ -1,7 +1,7 @@
 // import mongodb from 'mongodb';
 const ObjectId = require('objectid');
-const path = require('path');
 const fs = require('fs');
+import { join } from 'path';
 import { Connection, Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel, InjectConnection } from '@nestjs/mongoose';
@@ -37,8 +37,7 @@ export class AppService {
     const _id = new ObjectId();
 
     const filename = 'package.json';
-    const filePath = path.resolve(__dirname, '..', filename);
-    const readStream = fs.createReadStream(filePath);
+    const readStream = fs.createReadStream(join(process.cwd(), filename));
 
     const writeStream = bucket.createWriteStream({ _id, filename });
     readStream.pipe(writeStream);

@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { FileController } from './file.controller';
 import { WordSchema } from './schemas/word.schema';
 
 require('dotenv').config();
@@ -15,7 +16,7 @@ const hebrewSongsDatabaseUrl = `mongodb+srv://${DB_LOGIN}:${DB_PASSWORD}@${DB_BA
     MongooseModule.forRoot(hebrewSongsDatabaseUrl),
     MongooseModule.forFeature([{ name: 'Word', schema: WordSchema }]),
   ],
-  controllers: [AppController],
+  controllers: [AppController, FileController],
   providers: [AppService],
 })
 export class AppModule {}
