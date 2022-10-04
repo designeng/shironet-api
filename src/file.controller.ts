@@ -1,5 +1,10 @@
-import { Controller, Get, Response, StreamableFile } from '@nestjs/common';
-import { join } from 'path';
+import {
+  Controller,
+  Get,
+  Param,
+  Response,
+  StreamableFile,
+} from '@nestjs/common';
 import { FileService } from './file.service';
 
 @Controller('file')
@@ -8,13 +13,15 @@ export class FileController {
 
   @Get('/mp3/:filename')
   getMp3File(
-    filename: String,
+    @Param() params,
     @Response({ passthrough: true }) res,
   ): StreamableFile {
+    const { filename } = params;
     res.set({
       'Content-Type': 'audio/mp3',
       'Content-Disposition': `attachment; filename="${filename}"`,
     });
+
     return new StreamableFile(this.fileService.getReadableStream(filename));
   }
 }
