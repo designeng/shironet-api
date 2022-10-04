@@ -36,7 +36,7 @@ export class AppService {
     });
     const _id = new ObjectId();
 
-    const filename = 'package.json';
+    const filename = 'test.mp3';
     const readStream = fs.createReadStream(join(process.cwd(), filename));
 
     const writeStream = bucket.createWriteStream({ _id, filename });
