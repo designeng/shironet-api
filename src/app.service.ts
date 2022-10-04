@@ -25,10 +25,6 @@ export class AppService {
     return this.wordModel.find().exec();
   }
 
-  getMp3ById(id: String) {
-    return {};
-  }
-
   storeFileInDb() {
     const bucket = createBucket({
       bucketName: 'file',
