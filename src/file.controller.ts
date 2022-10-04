@@ -1,12 +1,20 @@
-import { Controller, Get, StreamableFile } from '@nestjs/common';
-import { createReadStream } from 'fs';
+import { Controller, Get, Response, StreamableFile } from '@nestjs/common';
 import { join } from 'path';
+import { FileService } from './file.service';
 
 @Controller('file')
 export class FileController {
-  @Get('/package')
-  getFile(): StreamableFile {
-    const file = createReadStream(join(process.cwd(), 'package.json'));
-    return new StreamableFile(file);
+  constructor(private readonly fileService: FileService) {}
+
+  @Get('/mp3/:filename')
+  getMp3File(
+    filename: String,
+    @Response({ passthrough: true }) res,
+  ): StreamableFile {
+    res.set({
+      'Content-Type': 'audio/mp3',
+      'Content-Disposition': `attachment; filename="${filename}"`,
+    });
+    return new StreamableFile(this.fileService.getReadableStream(filename));
   }
 }
