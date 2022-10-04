@@ -19,7 +19,6 @@ export class FileController {
     const { filename } = params;
     res.set({
       'Content-Type': 'audio/mp3',
-      'Content-Disposition': `attachment; filename="${filename}"`,
     });
 
     return new StreamableFile(this.fileService.getReadableStream(filename));
