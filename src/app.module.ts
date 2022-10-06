@@ -17,7 +17,7 @@ const hebrewSongsDatabaseUrl = `mongodb+srv://${DB_LOGIN}:${DB_PASSWORD}@${DB_BA
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(process.cwd(), 'client'),
+      rootPath: join(process.cwd(), 'public'),
     }),
     MongooseModule.forRoot(hebrewSongsDatabaseUrl),
     MongooseModule.forFeature([{ name: 'Word', schema: WordSchema }]),
