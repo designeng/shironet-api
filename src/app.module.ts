@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { FileController } from './file.controller';
@@ -14,6 +16,9 @@ const hebrewSongsDatabaseUrl = `mongodb+srv://${DB_LOGIN}:${DB_PASSWORD}@${DB_BA
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(process.cwd(), 'client'),
+    }),
     MongooseModule.forRoot(hebrewSongsDatabaseUrl),
     MongooseModule.forFeature([{ name: 'Word', schema: WordSchema }]),
   ],

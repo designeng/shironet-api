@@ -6,7 +6,7 @@ import { Word } from './interfaces/word.interface';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
+  @Get('/hello')
   getHello(): string {
     return this.appService.getHello();
   }
