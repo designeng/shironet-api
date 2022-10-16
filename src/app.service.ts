@@ -9,6 +9,7 @@ import { InjectModel, InjectConnection } from '@nestjs/mongoose';
 import { createModel, createBucket } from 'mongoose-gridfs';
 
 import { Word } from './interfaces/word.interface';
+import { Song } from './interfaces/song.interface';
 
 @Injectable()
 export class AppService {
@@ -17,8 +18,13 @@ export class AppService {
     @InjectModel('Word') private readonly wordModel: Model<Word>,
   ) {}
 
-  getHello(): string {
-    return 'Hebrew songs ' + process.env.DB_LOGIN;
+  getSongs(): Array<Song> {
+    console.log('getSongs');
+    const date = new Date();
+    return [
+      { id: date.getMilliseconds(), title: 'AAA' },
+      { id: date.getMilliseconds() + 1, title: 'BBB' },
+    ];
   }
 
   findAll() {
