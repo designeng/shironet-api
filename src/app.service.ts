@@ -19,11 +19,23 @@ export class AppService {
   ) {}
 
   getSongs(): Array<Song> {
-    console.log('getSongs');
-    const date = new Date();
+    const date = new Date().getTime();
     return [
-      { id: date.getMilliseconds(), title: 'AAA' },
-      { id: date.getMilliseconds() + 1, title: 'BBB' },
+      {
+        id: date,
+        title: 'Keren Peles',
+        url: 'https://www.youtube.com/embed/g9prCgt9xXM',
+      },
+      {
+        id: date + 1,
+        title: 'Chava Alberstein',
+        url: 'https://www.youtube.com/embed/UKLzN7qo6QI',
+      },
+      {
+        id: date + 2,
+        title: 'שלמה יידוב - חלק ממני',
+        url: 'https://www.youtube.com/embed/Q_fOlog97zI',
+      },
     ];
   }
 
