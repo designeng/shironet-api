@@ -10,6 +10,7 @@ import { createModel, createBucket } from 'mongoose-gridfs';
 
 import { Word } from './interfaces/word.interface';
 import { Song } from './interfaces/song.interface';
+import { SongDetails } from './interfaces/songDetails.interface';
 
 @Injectable()
 export class AppService {
@@ -37,6 +38,15 @@ export class AppService {
         url: 'https://www.youtube.com/embed/Q_fOlog97zI',
       },
     ];
+  }
+
+  getSongDetails(id: string): SongDetails {
+    return {
+      id: '123',
+      title: 'Title',
+      yotubeUrl: 'https://www.youtube.com/watch?v=z_8d5d4ZTQM',
+      lines: ['aaaa', 'bbbb'],
+    };
   }
 
   findAll() {
