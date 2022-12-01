@@ -28,4 +28,9 @@ export class AppController {
   async storeFileInDb() {
     return this.appService.storeFileInDb();
   }
+
+  @Get('/test')
+  async test() {
+    return 'test';
+  }
 }
